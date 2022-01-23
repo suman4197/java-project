@@ -7,34 +7,18 @@ pipeline {
                     sleep 5
                       }
                   }
-                  
              stage ('writing a parallel exicution job') {
                 parallel {
                     stage ('Build') {
                         steps {
-                            git branch: 'main', url: 'https://github.com/suman4197/java-project.git'
-                            sh 'mvn clean install'
-                            echo "build is succesful"
-                            sleep 5
+                                git branch: 'main', url: 'https://github.com/harishh1265/java-codes.git'
+                                sh 'mvn clean install'
+                                echo "build is succesful"
+                                sleep 5
                                }
                             }
-                       stage ('Deploy') {
-                            steps {
-                                  sh 'cp /var/lib/jenkins/.m2/repository/com/efsavage/hello-world-war/1.0.0/hello-world-war-1.0.0.war /home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
-                                  git branch: 'main', credentialsId: 'ad662433-5b19-4f6e-8f9d-c4e50b364632', url: 'https://github.com/suman4197/java-project.git'
-                                  echo "deploy is succesful"
-                                  sleep 5
-                                  }
-                             }
-                        }
-                   }
-                 stage ('Test') {
-                        steps { 
-                            echo "test is succesful"
-                            sleep 5
-                                }
-                             }
-                   }
+              
+                            }
+                       }
+                  }
            }
-                            
-                            
