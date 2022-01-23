@@ -11,7 +11,7 @@ pipeline {
                 parallel {
                     stage ('Build') {
                         steps {
-                                git branch: 'main', url: 'https://github.com/harishh1265/java-codes.git'
+                                git branch: 'main', url: 'https://github.com/suman4197/java-project.git'
                                 sh 'mvn clean install'
                                 echo "build is succesful"
                                 sleep 5
