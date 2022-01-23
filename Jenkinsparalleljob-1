@@ -10,7 +10,6 @@ pipeline {
              stage ('writing a parallel exicution job') {
                 parallel {
                     stage ('Build') {
-                        agent {label 'slave02'}
                         steps {
                                 git branch: 'main', url: 'https://github.com/suman4197/java-project.git'
                                 sh 'mvn clean install'
@@ -19,7 +18,6 @@ pipeline {
                                }
                          }
                      stage ('Deploy') {
-                        agent {label 'slave02'}
                             steps {
                                   sh 'scp -r /opt/jenkins/workspace/paralleljob/target/hello-world-war-1.0.0.war ec2-user@172.31.4.208:/home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
                                   echo "deploy is succesful"
