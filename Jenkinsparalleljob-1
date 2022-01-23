@@ -1,0 +1,26 @@
+pipeline {
+    agent any 
+        stages {
+            stage ('Exicuting parallel job') {
+                steps {
+                    echo "build step need to be writtrn to build a project"
+                    sleep 5
+                      }
+                  }
+                  
+             stage ('writing a parallel exicution job') {
+                parallel {
+                    stage ('Build') {
+                        steps {
+                            git branch: 'main', url: 'https://github.com/suman4197/java-project.git'
+                            sh 'mvn clean install'
+                            echo "build is succesful"
+                            sleep 5
+                               }
+                            }
+                     }
+                   }
+                }
+              }
+                            
+                            
