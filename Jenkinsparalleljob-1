@@ -20,12 +20,14 @@ pipeline {
                             }
                          }
                      stage ('Deploy') {
+                        agent ( label 'slave01') {
                             steps {
                                   sh 'scp -r /opt/jenkins/workspace/paralleljob/target/hello-world-war-1.0.0.war ec2-user@172.31.44.12:/home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
                                   echo "deploy is succesful"
                                   sleep 5
                                   }
                              }
+                           }
                         }
                    }
             stage ('Test') {
