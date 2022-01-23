@@ -20,7 +20,7 @@ pipeline {
                             }
                        stage ('Deploy') {
                             steps {
-                                  sh'cp /var/lib/jenkins/.m2/repository/com/efsavage/hello-world-war/1.0.0/hello-world-war-1.0.0.war /home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
+                                  sh 'cp /var/lib/jenkins/.m2/repository/com/efsavage/hello-world-war/1.0.0/hello-world-war-1.0.0.war /home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
                                   echo "deploy is succesful"
                                   sleep 5
                                   }
