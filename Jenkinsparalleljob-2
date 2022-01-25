@@ -22,8 +22,6 @@ pipeline {
                           agent { label 'slave02' }
                             steps {
                                   sh 'cp -r /opt/jenkins/workspace/paralleldev-slave01@2/target/hello-world-war-1.0.0.war /home/ec2-user/tomcat/apache-tomcat-8.5.75/webapps/'
-                                  deploy adapters: [tomcat8(credentialsId: 'df309c8e-f301-4f7a-a19a-fbf587ec57e9', path: '', url: 'http://15.206.148.170:8090/')], contextPath: null, war: 'hello-world-war-1.0.0.war'
-                                  echo "depoly is succesful"
                                   sleep 5
                                   }
                                 }
