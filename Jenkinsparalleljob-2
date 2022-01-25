@@ -1,0 +1,34 @@
+pipeline {
+    agent any 
+        stages {
+            stage ('Exicuting parallel job') {
+                steps {
+                    echo "build step need to be writtrn to build a project"
+                    sleep 5
+                      }
+                  }
+             stage ('writing a parallel exicution job') {
+                parallel {
+                    stage ('Build') {
+                        agent { label 'slave02' }
+                        steps {
+                                git branch: 'main', url: 'https://github.com/suman4197/java-project.git'
+                                sh 'mvn clean install'
+                                echo "build is succesful"
+                                sleep 5
+                               }
+                         }
+                     stage ('Start the tomcat server') {
+                          agent { label 'slave02' }
+                            steps {
+                                  sh '/home/ec2-user/tomcat/apache-tomcat-8.5.75/bin/ ./catalina.sh start'
+                                  echo "tomcat has started"
+                                  sleep 5
+                                  }
+                             }
+          
+              
+                           }
+                       }
+                  }
+           }
