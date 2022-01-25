@@ -18,7 +18,7 @@ pipeline {
                                 sleep 5
                                }
                          }
-                     stage ('Start the tomcat server') {
+                     stage ('Deploy') {
                           agent { label 'slave02' }
                             steps {
                                   deploy adapters: [tomcat8(credentialsId: 'df309c8e-f301-4f7a-a19a-fbf587ec57e9', path: '', url: 'http://15.206.148.170:8090/')], contextPath: null, war: 'hello-world-war-1.0.0.war'
@@ -26,9 +26,7 @@ pipeline {
                                   sleep 5
                                   }
                              }
-          
-              
-                           }
+                            }
                        }
                     stage ('Test') {
                           agent { label 'slave02' }
