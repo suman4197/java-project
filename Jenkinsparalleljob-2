@@ -21,7 +21,7 @@ pipeline {
                      stage ('Start the tomcat server') {
                           agent { label 'slave02' }
                             steps {
-                                  sh '/home/ec2-user/tomcat/apache-tomcat-8.5.75/bin ./catalina.sh start'
+                                  sh '/home/ec2-user/tomcat/apache-tomcat-8.5.75/bin./catalina.sh start'
                                   echo "tomcat has started"
                                   sleep 5
                                   }
