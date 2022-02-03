@@ -1,5 +1,5 @@
 pipeline {
-    ageny any 
+    agent any 
         stages { 
             stage ('cloning a repository') { 
               agent {label 'master'}
